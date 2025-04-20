@@ -197,3 +197,28 @@ test.c:14:6: note: destination object referenced by ‘restrict’-qualified arg
       |      ^~~
 cc1: all warnings being treated as errors
 35f9545
+Sun 20 Apr 2025 02:57:24 AM UTC: 
+ hashmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+Compilation failed
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:66:9: error: unused variable ‘old_size’ [-Werror=unused-variable]
+   66 |     int old_size = map->size;
+      |         ^~~~~~~~
+test.c: At top level:
+test.c:8:8: error: redefinition of ‘_strdup’
+    8 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+In file included from hashmap.c:7:
+main.c:14:8: note: previous definition of ‘_strdup’ with type ‘char *(const char *)’
+   14 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+test.c:453:5: error: redefinition of ‘main’
+  453 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+main.c:33:5: note: previous definition of ‘main’ with type ‘int()’
+   33 | int main() {
+      |     ^~~~
+cc1: all warnings being treated as errors
+884ea2d
