@@ -4,7 +4,6 @@
 #include <math.h>
 #include <ctype.h>
 #include "hashmap.h"
-#include "main.c"
 
 
 typedef struct HashMap HashMap;
