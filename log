@@ -111,3 +111,33 @@ hashmap.c:65:9: error: unused variable ‘old_size’ [-Werror=unused-variable]
       |         ^~~~~~~~
 cc1: all warnings being treated as errors
 9af442b
+Sun 20 Apr 2025 02:51:14 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:65:9: error: unused variable ‘old_size’ [-Werror=unused-variable]
+   65 |     int old_size = map->size;
+      |         ^~~~~~~~
+test.c: In function ‘enlarge_test’:
+test.c:442:9: error: ‘sprintf’ argument 3 overlaps destination object ‘msg’ [-Werror=restrict]
+  442 |         sprintf(msg,"%.100s\nbut should be: \nvalue3  (null)  (null)  (null)  value4  (null)  value2  value1  value0  (null)  (null)  (null)  value5  (null)  (null)  (null)  (null)  (null)  (null)  (null)",msg);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test.c:14:6: note: destination object referenced by ‘restrict’-qualified argument 1 was declared here
+   14 | char msg[300];
+      |      ^~~
+test.c:439:18: error: ‘sprintf’ argument 3 overlaps destination object ‘msg’ [-Werror=restrict]
+  439 |             else sprintf(msg,"%.100s%s  ", msg, (char*)map->buckets[i]->value);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test.c:14:6: note: destination object referenced by ‘restrict’-qualified argument 1 was declared here
+   14 | char msg[300];
+      |      ^~~
+test.c:438:39: error: ‘sprintf’ argument 3 overlaps destination object ‘msg’ [-Werror=restrict]
+  438 |             if(map->buckets[i]==NULL) sprintf(msg,"%.100s(null)  ",msg);
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test.c:14:6: note: destination object referenced by ‘restrict’-qualified argument 1 was declared here
+   14 | char msg[300];
+      |      ^~~
+cc1: all warnings being treated as errors
+b629956
