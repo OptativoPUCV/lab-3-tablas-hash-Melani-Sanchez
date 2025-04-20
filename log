@@ -96,3 +96,18 @@ test.c:14:6: note: destination object referenced by ‘restrict’-qualified arg
       |      ^~~
 cc1: all warnings being treated as errors
 44ff77f
+Sun 20 Apr 2025 02:50:12 AM UTC: 
+ hashmap.c | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:81:22: error: ‘i’ undeclared (first use in this function)
+   81 |     free(old_buckets[i]);
+      |                      ^
+hashmap.c:81:22: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c:65:9: error: unused variable ‘old_size’ [-Werror=unused-variable]
+   65 |     int old_size = map->size;
+      |         ^~~~~~~~
+cc1: all warnings being treated as errors
+9af442b
